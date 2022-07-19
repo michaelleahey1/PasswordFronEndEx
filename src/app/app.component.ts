@@ -10,11 +10,15 @@ export class AppComponent {
   title = 'FormValidationExample';
 
   loginForm = new FormGroup({
-      uname : new FormControl('', [Validators.required,Validators.minLength(12)]),
-      pword : new FormControl('', [Validators.pattern("[0-9{3}]"),Validators.minLength(4), Validators.maxLength(10)])
+      uid : new FormControl('',[Validators.required,Validators.minLength(6)]),
+      uname : new FormControl('', [Validators.required,Validators.minLength(4)]),
+      pword : new FormControl('', [Validators.pattern("[0-9@!%&]{6,20}"),Validators.minLength(6), Validators.maxLength(20)])
   })
   onSubmit() {
       console.log(this.loginForm.value)
+  }
+  get uid() {
+    return this.loginForm.get('uid');
   }
   get uname() {
     return this.loginForm.get('uname');
