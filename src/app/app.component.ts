@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -8,15 +9,17 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class AppComponent {
   title = 'FormValidationExample';
+  msg = "";
 
   loginForm = new FormGroup({
-      uid : new FormControl('',[Validators.required,Validators.minLength(6)]),
       uname : new FormControl('', [Validators.required,Validators.minLength(4)]),
       pword : new FormControl('', [Validators.pattern("[0-9@!%&]{6,20}"),Validators.minLength(6), Validators.maxLength(20)])
   })
+  httpClient: any;
   onSubmit() {
       console.log(this.loginForm.value)
   }
+
   get uid() {
     return this.loginForm.get('uid');
   }
@@ -27,3 +30,7 @@ export class AppComponent {
     return this.loginForm.get('pword');
   }
 }
+function baseURL(baseURL: any, data: any): Observable<any> {
+  throw new Error('Function not implemented.');
+}
+

@@ -1,23 +1,17 @@
 <div>
   <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-      ID
-      <input name="uid" type="text" 
-      formControlName="uid"/>
-      <div
-        *ngIf="uid && uid?.errors?.['minlength'] && uid?.touched">
-        Enter User id
-      </div>
-      <br>
-      Username 
+      
+  Username 
       <input type="text" name="username" formControlName="uname">
-      <div *ngIf="uname && uname?.invalid && uname?.touched">Username or Password is invalid</div>
+      <div *ngIf="uname && uname?.invalid && uname?.touched">Username is invalid</div>
       <br>
       Password 
       <input type="text" name="password" formControlName="pword">
-      <div *ngIf="pword && pword?.invalid && pword?.touched">Username or Password is invalid</div>
+      <div *ngIf="pword && pword?.invalid && pword?.touched">Password is invalid</div>
       <br>
-      <button>Submit</button>
+      <button>Login</button>
   </form>
+  <div>{{msg}}</div>
 </div>
 
 <router-outlet></router-outlet>
