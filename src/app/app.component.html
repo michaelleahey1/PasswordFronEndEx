@@ -1,6 +1,14 @@
 <div>
   <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-      User Name 
+      ID
+      <input name="id" type="text" placeholder="Enter ypur user id"
+      formControlName="id"/>
+      <div>
+        *ngIf="ids && ids?.errors?.['minlength] && ids?.touched && ids?.touched">
+        Enter your Unique User id
+      </div>
+
+      Username 
       <input type="text" name="username" formControlName="uname">
       <div *ngIf="uname && uname?.invalid && uname?.touched">Username or Password is invalid</div>
       <br />
